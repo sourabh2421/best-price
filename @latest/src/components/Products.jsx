@@ -44,6 +44,9 @@ function Products() {
                   src={product.image}
                   alt={`${product.title} for mobile accessories collection`}
                   loading="lazy"
+                  decoding="async"
+                  width={600}
+                  height={750}
                   whileHover={{ scale: 1.06 }}
                   transition={{ duration: 0.5 }}
                   className="h-full w-full object-cover"

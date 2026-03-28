@@ -1,14 +1,16 @@
-import About from './components/About'
-import Contact from './components/Contact'
-import FloatingWhatsApp from './components/FloatingWhatsApp'
-import Footer from './components/Footer'
+import { lazy, Suspense } from 'react'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
-import Products from './components/Products'
-import Reviews from './components/Reviews'
-import ScrollToTopButton from './components/ScrollToTopButton'
 import ScrollProgressBar from './components/ScrollProgressBar'
-import Services from './components/Services'
+
+const About = lazy(() => import('./components/About'))
+const Services = lazy(() => import('./components/Services'))
+const Products = lazy(() => import('./components/Products'))
+const Reviews = lazy(() => import('./components/Reviews'))
+const Contact = lazy(() => import('./components/Contact'))
+const Footer = lazy(() => import('./components/Footer'))
+const FloatingWhatsApp = lazy(() => import('./components/FloatingWhatsApp'))
+const ScrollToTopButton = lazy(() => import('./components/ScrollToTopButton'))
 
 function App() {
   return (
@@ -17,15 +19,19 @@ function App() {
       <Navbar />
       <main className="overflow-x-hidden">
         <Hero />
-        <About />
-        <Services />
-        <Products />
-        <Reviews />
-        <Contact />
+        <Suspense fallback={null}>
+          <About />
+          <Services />
+          <Products />
+          <Reviews />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
-      <ScrollToTopButton />
-      <FloatingWhatsApp />
+      <Suspense fallback={null}>
+        <Footer />
+        <ScrollToTopButton />
+        <FloatingWhatsApp />
+      </Suspense>
     </div>
   )
 }

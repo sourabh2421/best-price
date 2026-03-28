@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.webp'
 import { business } from '../data/siteData'
 
 const links = [

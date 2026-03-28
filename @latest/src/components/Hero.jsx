@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { FaStar } from 'react-icons/fa'
-import heroBg from '../assets/heroimagebg.png'
+import heroBg from '../assets/heroimagebg.webp'
 import { business } from '../data/siteData'
 import PrimaryButton from './ui/PrimaryButton'
 
@@ -42,20 +42,21 @@ function Hero() {
         <img
           src={heroBg}
           alt=""
+          decoding="async"
+          fetchPriority="high"
           className="h-full w-full object-cover opacity-[0.50]"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-white via-orange-50/80 to-amber-100/60" />
-        <div className="absolute left-1/2 top-[30%] h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-amber-200/40 via-orange-100/30 to-transparent blur-[100px]" />
+        <div className="absolute left-1/2 top-[30%] h-[400px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-amber-200/40 via-orange-100/30 to-transparent blur-3xl" />
       </motion.div>
 
-      {/* Ambient blurred orbs */}
       <div
         aria-hidden="true"
-        className="absolute -left-32 top-20 h-72 w-72 rounded-full bg-amber-300/20 blur-[100px]"
+        className="absolute -left-32 top-20 h-56 w-56 rounded-full bg-amber-300/20 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-orange-200/25 blur-[80px]"
+        className="absolute -right-24 bottom-10 h-48 w-48 rounded-full bg-orange-200/25 blur-3xl"
       />
 
       <div className="relative mx-auto max-w-5xl px-6 pb-28 pt-8 md:pb-36 md:pt-12">

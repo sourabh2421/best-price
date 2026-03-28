@@ -40,22 +40,22 @@ export const products = [
   {
     title: 'Phone Covers',
     image:
-      'https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=600&q=70',
   },
   {
     title: 'Chargers & Cables',
     image:
-      'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=70',
   },
   {
     title: 'Earphones & Headphones',
     image:
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=70',
   },
   {
     title: 'Screen Guards',
     image:
-      'https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?auto=format&fit=crop&w=600&q=70',
   },
 ]
 
