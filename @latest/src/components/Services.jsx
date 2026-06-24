@@ -23,13 +23,13 @@ function Services() {
   }
 
   const item = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+    hidden: { opacity: 0, y: 32 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
   }
 
   return (
-    <section id="services" className="section-anchor bg-white py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="services" className="section-anchor bg-white py-20 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="Our Services"
           title="Everything Your Phone Needs, In One Place"
@@ -49,17 +49,17 @@ function Services() {
               <motion.article
                 key={service.title}
                 variants={item}
-                whileHover={{ y: -5, scale: 1.03 }}
+                whileHover={{ y: -6, scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-                className="rounded-2xl border border-neutral-100 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-xl"
+                className="group rounded-2xl border border-slate-200/60 bg-gradient-to-br from-white to-slate-50/30 p-7 shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/10"
               >
-                <div className="mb-5 inline-flex rounded-xl bg-amber-50 p-3 text-amber-500">
+                <div className="mb-5 inline-flex rounded-xl bg-gradient-to-br from-blue-50 to-orange-50 p-3 text-primary-600 transition-all duration-300 group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-primary-600 group-hover:to-accent-500 group-hover:text-white group-hover:shadow-glow-accent">
                   <Icon size={28} />
                 </div>
-                <h3 className="font-display text-xl font-semibold text-neutral-900">
+                <h3 className="font-display text-xl font-semibold text-slate-900">
                   {service.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   {service.description}
                 </p>
               </motion.article>

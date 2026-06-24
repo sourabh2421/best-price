@@ -9,8 +9,8 @@ function Contact() {
   )}&output=embed`
 
   return (
-    <section id="contact" className="section-anchor bg-neutral-50 py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="contact" className="section-anchor bg-slate-50 py-20 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="Visit Us"
           title="Location & Contact"
@@ -18,45 +18,53 @@ function Contact() {
         />
 
         <div className="grid gap-7 lg:grid-cols-[0.95fr_1.05fr]">
-          <Reveal className="rounded-2xl border border-neutral-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-xl">
-            <ul className="space-y-5">
-              <li className="flex gap-3">
-                <FaMapMarkerAlt className="mt-1 text-amber-500" />
+          <Reveal className="rounded-2xl border border-slate-200/60 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10">
+            <ul className="space-y-6">
+              <li className="flex gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-primary-600">
+                  <FaMapMarkerAlt size={16} />
+                </div>
                 <div>
-                  <p className="text-sm uppercase tracking-wide text-neutral-400">Address</p>
-                  <p className="text-neutral-600">{business.address}</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Address</p>
+                  <p className="mt-1 text-slate-600">{business.address}</p>
                 </div>
               </li>
-              <li className="flex gap-3">
-                <FaPhoneAlt className="mt-1 text-amber-500" />
+              <li className="flex gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-accent-600">
+                  <FaPhoneAlt size={15} />
+                </div>
                 <div>
-                  <p className="text-sm uppercase tracking-wide text-neutral-400">Phone</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Phone</p>
                   <a
                     href={`tel:${business.phone}`}
-                    className="font-semibold text-neutral-800 transition hover:text-amber-500"
+                    className="mt-1 block font-semibold text-slate-800 transition-colors duration-300 hover:text-primary-600"
                   >
                     {business.phone}
                   </a>
                 </div>
               </li>
-              <li className="flex gap-3">
-                <FaClock className="mt-1 text-amber-500" />
+              <li className="flex gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-50 text-success-600">
+                  <FaClock size={15} />
+                </div>
                 <div>
-                  <p className="text-sm uppercase tracking-wide text-neutral-400">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
                     Opening Hours
                   </p>
-                  <p className="text-neutral-600">{business.status}</p>
+                  <p className="mt-1 text-slate-600">{business.status}</p>
                 </div>
               </li>
-              <li className="flex gap-3">
-                <FaInstagram className="mt-1 text-amber-500" />
+              <li className="flex gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-50 to-pink-50 text-purple-600">
+                  <FaInstagram size={16} />
+                </div>
                 <div>
-                  <p className="text-sm uppercase tracking-wide text-neutral-400">Instagram</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Instagram</p>
                   <a
                     href={business.instagram}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-semibold text-neutral-800 transition hover:text-amber-500"
+                    className="mt-1 block font-semibold text-slate-800 transition-colors duration-300 hover:text-purple-600"
                   >
                     Follow us on Instagram
                   </a>
@@ -65,7 +73,7 @@ function Contact() {
             </ul>
           </Reveal>
 
-          <Reveal delay={0.1} className="overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl">
+          <Reveal delay={0.1} className="overflow-hidden rounded-2xl border border-slate-200/60 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/10">
             <iframe
               title="Best Price Mobile Accessories And Repairing Location"
               src={mapSrc}

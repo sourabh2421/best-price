@@ -17,13 +17,13 @@ function ScrollToTopButton() {
       aria-label="Scroll to top"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       initial={{ opacity: 0, y: 18 }}
-      animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+      animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 7 }}
       transition={{ duration: 0.3 }}
-      whileHover={{ y: -2, scale: 1.05 }}
-      whileTap={{ scale: 0.98 }}
-      className="fixed bottom-24 right-5 z-50 rounded-xl border border-neutral-200 bg-white/90 p-3 text-neutral-700 shadow-sm backdrop-blur transition-all duration-300"
+      whileHover={{ y: -3, scale: 1.05 }}
+      whileTap={{ scale: 0.97 }}
+      className="fixed bottom-32 right-5 z-50 rounded-2xl border border-slate-200 bg-white/95 p-3.5 text-primary-600 shadow-lg backdrop-blur transition-all duration-300 hover:shadow-glow"
     >
-      <FaArrowUp size={16} />
+      <FaArrowUp size={18} />
     </motion.button>
   )
 }

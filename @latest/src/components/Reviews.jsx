@@ -10,13 +10,13 @@ function Reviews() {
   }
 
   const card = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
+    hidden: { opacity: 0, y: 28 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
   }
 
   return (
-    <section id="reviews" className="section-anchor bg-white py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="reviews" className="section-anchor bg-white py-20 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="Customer Reviews"
           title="Loved By Local Customers"
@@ -34,17 +34,17 @@ function Reviews() {
             <motion.article
               key={review.quote}
               variants={card}
-              whileHover={{ y: -5, scale: 1.03 }}
-              className="rounded-2xl border border-neutral-100 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-xl"
+              whileHover={{ y: -6, scale: 1.01 }}
+              className="group rounded-2xl border border-slate-200/60 bg-gradient-to-br from-white to-slate-50/20 p-7 shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-success-500/10"
             >
-              <FaQuoteLeft className="text-amber-500" />
-              <p className="mt-4 text-neutral-600">{review.quote}</p>
-              <div className="mt-4 flex items-center gap-1 text-amber-500">
+              <FaQuoteLeft className="text-success-500" />
+              <p className="mt-4 leading-relaxed text-slate-600">{review.quote}</p>
+              <div className="mt-4 flex items-center gap-1 text-success-500">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <FaStar key={`${review.author}-${i}`} size={14} />
                 ))}
               </div>
-              <p className="mt-3 text-sm font-semibold text-neutral-900">{review.author}</p>
+              <p className="mt-3 text-sm font-semibold text-slate-900">{review.author}</p>
             </motion.article>
           ))}
         </motion.div>

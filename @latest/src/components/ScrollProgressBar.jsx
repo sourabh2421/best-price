@@ -8,7 +8,7 @@ function ScrollProgressBar() {
     <motion.div
       aria-hidden="true"
       style={{ scaleX, transformOrigin: '0%' }}
-      className="fixed left-0 right-0 top-0 z-[60] h-1 bg-gradient-to-r from-amber-500 to-orange-500"
+      className="fixed left-0 right-0 top-0 z-[60] h-1 bg-gradient-to-r from-primary-600 via-accent-500 to-primary-600"
     />
   )
 }

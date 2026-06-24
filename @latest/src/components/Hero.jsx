@@ -1,21 +1,34 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { FaStar } from 'react-icons/fa'
+import { HiArrowDown, HiShoppingBag } from 'react-icons/hi'
+import { Link } from 'react-router-dom'
 import heroBg from '../assets/heroimagebg.webp'
 import { business } from '../data/siteData'
 import PrimaryButton from './ui/PrimaryButton'
 
-const stagger = {
+const containerVariants = {
   hidden: { opacity: 0 },
-  show: {
+  visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.13, delayChildren: 0.15 },
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.3,
+      ease: [0.25, 0.46, 0.45, 0.94]
+    },
   },
 }
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+const itemVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.8, 
+      ease: [0.25, 0.46, 0.45, 0.94] 
+    } 
+  },
 }
 
 function Hero() {
@@ -24,111 +37,206 @@ function Hero() {
     target: heroRef,
     offset: ['start start', 'end start'],
   })
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 60])
+
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 100])
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 50])
 
   return (
     <section
       id="home"
       ref={heroRef}
-      className="section-anchor relative isolate overflow-hidden pt-28 md:pt-32"
+      className="section-anchor relative overflow-hidden bg-white pt-24 md:pt-32"
       aria-label="Hero section"
     >
-      {/* ── Background image at low opacity ── */}
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 -z-10 h-[130%]"
-        aria-hidden="true"
-      >
-        <img
-          src={heroBg}
-          alt=""
-          decoding="async"
-          fetchPriority="high"
-          className="h-full w-full object-cover opacity-[0.50]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-orange-50/80 to-amber-100/60" />
-        <div className="absolute left-1/2 top-[30%] h-[400px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-amber-200/40 via-orange-100/30 to-transparent blur-3xl" />
-      </motion.div>
-
-      <div
-        aria-hidden="true"
-        className="absolute -left-32 top-20 h-56 w-56 rounded-full bg-amber-300/20 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute -right-24 bottom-10 h-48 w-48 rounded-full bg-orange-200/25 blur-3xl"
-      />
-
-      <div className="relative mx-auto max-w-5xl px-6 pb-28 pt-8 md:pb-36 md:pt-12">
-        {/* ── Centered text ── */}
+      {/* Grid overlay for editorial feel */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:32px_32px] opacity-40" />
+      
+      <div className="relative mx-auto grid min-h-[85vh] max-w-7xl items-center gap-16 px-6 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:gap-24">
+        {/* Left side: Content */}
         <motion.div
-          variants={stagger}
+          variants={containerVariants}
           initial="hidden"
-          animate="show"
-          className="mx-auto max-w-3xl text-center"
+          animate="visible"
+          style={{ y: contentY }}
+          className="relative z-10"
         >
-          <motion.p
-            variants={fadeUp}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-700 shadow-sm backdrop-blur"
+          {/* Trust badge */}
+          <motion.div 
+            variants={itemVariants} 
+            className="mb-8 inline-block"
           >
-            <FaStar className="text-amber-500" />
-            Rated {business.rating} ({business.reviewsCount} reviews)
-          </motion.p>
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 shadow-sm">
+              <div className="flex items-center gap-1.5">
+                <FaStar className="text-yellow-400" size={14} />
+                <span className="text-sm font-medium text-slate-900">
+                  {business.rating}
+                </span>
+              </div>
+              <div className="h-3 w-px bg-slate-300" />
+              <span className="text-sm text-slate-600">
+                {business.reviewsCount}+ reviews
+              </span>
+            </div>
+          </motion.div>
 
+          {/* Main headline - Enhanced typography */}
           <motion.h1
-            variants={fadeUp}
-            className="font-display text-4xl font-bold leading-[1.08] tracking-tight text-neutral-900 sm:text-5xl md:text-6xl"
+            variants={itemVariants}
+            className="font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] text-slate-900 sm:text-6xl md:text-7xl lg:text-8xl"
           >
-            Best Mobile Accessories
+            Best Mobile
             <br />
-            at the{' '}
-            <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
-              Lowest Prices
+            <span className="relative">
+              Accessories
+              <div className="absolute -bottom-2 left-0 h-1 w-full bg-gradient-to-r from-primary-600 to-accent-500 opacity-20" />
+            </span>
+            <br />
+            at{' '}
+            <span className="relative bg-gradient-to-r from-primary-600 via-accent-500 to-primary-700 bg-clip-text text-transparent">
+              Best Prices
             </span>
           </motion.h1>
 
+          {/* Hindi subtitle */}
           <motion.p
-            variants={fadeUp}
-            className="mx-auto mt-3 max-w-lg text-base text-neutral-500"
+            variants={itemVariants}
+            className="mt-6 text-lg font-medium text-slate-600 tracking-wide"
           >
             {business.hindiName}
           </motion.p>
 
+          {/* Description */}
           <motion.p
-            variants={fadeUp}
-            className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-neutral-600 md:text-lg"
+            variants={itemVariants}
+            className="mt-8 max-w-xl text-lg leading-relaxed text-slate-700"
           >
-            Premium quality accessories and expert phone repair services in West
-            Patel Nagar, Delhi. Trusted by thousands of happy customers.
+            Premium quality mobile accessories and expert phone repair services in West Patel Nagar, Delhi. 
+            <span className="font-medium text-slate-900"> Trusted by thousands of customers.</span>
           </motion.p>
 
+          {/* CTA buttons */}
           <motion.div
-            variants={fadeUp}
-            className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center"
+            variants={itemVariants}
+            className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
           >
-            <PrimaryButton
+            <motion.a
               href={`tel:${business.phone}`}
-              className="w-full sm:w-auto"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary-600 to-accent-500 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-primary-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/40"
             >
-              Call Now
-            </PrimaryButton>
-            <PrimaryButton
+              <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-700 to-accent-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <span className="relative">Call Now</span>
+            </motion.a>
+            
+            <Link to="/shop">
+              <motion.button
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-900 transition-all duration-300 hover:border-slate-300 hover:bg-slate-50 hover:shadow-md"
+              >
+                <HiShoppingBag size={20} />
+                Shop Now
+              </motion.button>
+            </Link>
+            
+            <motion.a
               href="#contact"
-              variant="outline"
-              className="w-full sm:w-auto"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center rounded-2xl border-2 border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-900 transition-all duration-300 hover:border-slate-300 hover:bg-slate-50 hover:shadow-md"
             >
               Visit Store
-            </PrimaryButton>
+            </motion.a>
           </motion.div>
 
+          {/* Location */}
           <motion.p
-            variants={fadeUp}
-            className="mt-6 text-sm text-neutral-400"
+            variants={itemVariants}
+            className="mt-8 flex items-center gap-2 text-sm text-slate-500"
           >
+            <span className="text-primary-600">📍</span>
             {business.address}
           </motion.p>
         </motion.div>
+
+        {/* Right side: Product showcase */}
+        <motion.div
+          style={{ y: imageY }}
+          className="relative"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="relative"
+          >
+            {/* Background accent */}
+            <div className="absolute -inset-8 rounded-3xl bg-gradient-to-br from-primary-50 to-accent-50 opacity-60" />
+            
+            {/* Main product image */}
+            <div className="relative overflow-hidden rounded-2xl bg-white p-8 shadow-2xl shadow-slate-900/10">
+              <img
+                src={heroBg}
+                alt="Mobile accessories showcase"
+                className="h-full w-full max-w-md rounded-xl object-cover"
+                loading="eager"
+                fetchPriority="high"
+              />
+            </div>
+
+            {/* Floating elements */}
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute -left-4 top-8 rounded-xl bg-white p-3 shadow-lg"
+            >
+              <div className="flex items-center gap-2">
+                <div className="h-8 w-8 rounded-lg bg-success-500 flex items-center justify-center">
+                  <FaStar className="text-white text-xs" />
+                </div>
+                <div>
+                  <p className="text-xs font-medium text-slate-900">{business.rating}/5</p>
+                  <p className="text-xs text-slate-500">Rating</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+              className="absolute -right-4 bottom-8 rounded-xl bg-white p-3 shadow-lg"
+            >
+              <div className="flex items-center gap-2">
+                <div className="h-8 w-8 rounded-lg bg-primary-500 flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">₹</span>
+                </div>
+                <div>
+                  <p className="text-xs font-medium text-slate-900">Best</p>
+                  <p className="text-xs text-slate-500">Prices</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 4, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-2 text-slate-400"
+        >
+          <span className="text-xs font-medium uppercase tracking-widest">Scroll</span>
+          <HiArrowDown size={16} />
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

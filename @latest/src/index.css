@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color: #171717;
-  background-color: #ffffff;
+  color: #1e293b;
+  background-color: #fafafa;
 }
 
 html {
@@ -14,8 +16,8 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #ffffff;
-  color: #171717;
+  background: #fafafa;
+  color: #1e293b;
 }
 
 * {
@@ -29,4 +31,20 @@ body {
 .glass-card {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Premium shadow effects */
+.shadow-glow {
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.05), 0 1px 2px 0 rgba(99, 102, 241, 0.1), 0 25px 50px -12px rgba(99, 102, 241, 0.4);
+}
+
+.shadow-glow-accent {
+  box-shadow: 0 0 0 1px rgba(6, 182, 212, 0.1), 0 1px 2px 0 rgba(6, 182, 212, 0.1), 0 25px 50px -12px rgba(6, 182, 212, 0.4);
 }

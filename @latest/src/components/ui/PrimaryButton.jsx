@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { motion } from 'framer-motion'
 
 const baseStyles =
-  'inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2'
+  'inline-flex items-center justify-center rounded-2xl px-7 py-3.5 text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2'
 
 function PrimaryButton({
   href,
@@ -14,8 +14,8 @@ function PrimaryButton({
 }) {
   const variantStyles =
     variant === 'outline'
-      ? 'border border-neutral-300 bg-white text-neutral-700'
-      : 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm shadow-amber-500/30'
+      ? 'border-2 border-slate-300 bg-white text-slate-700 hover:border-primary-500 hover:text-primary-600'
+      : 'bg-gradient-to-r from-primary-600 to-primary-500 text-white shadow-lg shadow-primary-500/30 hover:shadow-glow'
 
   return (
     <motion.a
@@ -23,7 +23,7 @@ function PrimaryButton({
       target={target}
       rel={rel}
       whileHover={{ y: -2, scale: 1.02 }}
-      whileTap={{ scale: 0.99 }}
+      whileTap={{ scale: 0.98 }}
       className={`${baseStyles} ${variantStyles} ${className}`}
     >
       {children}
