@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { API_URL } from '../../config'
 
 function AdminLogin({ onLogin }) {
   const [password, setPassword] = useState('')
@@ -12,7 +13,7 @@ function AdminLogin({ onLogin }) {
     setIsLoading(true)
 
     try {
-      const response = await fetch('http://localhost:3001/api/admin/login', {
+      const response = await fetch(`${API_URL}/api/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

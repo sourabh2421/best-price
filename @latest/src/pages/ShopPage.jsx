@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiShoppingCart, HiPlus, HiHome } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
+import { API_URL } from '../config'
 import logo from '../assets/logo.webp'
 import Footer from '../components/Footer'
 import CartModal from '../components/CartModal'
@@ -33,7 +34,7 @@ function ShopPage() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/products')
+      const response = await fetch(`${API_URL}/api/products`)
       const data = await response.json()
       setProducts(data)
     } catch (error) {
@@ -172,7 +173,7 @@ function ShopPage() {
                   >
                     <div className="aspect-square overflow-hidden bg-slate-50">
                       <img
-                        src={`http://localhost:3001/products/${product.filename}`}
+                        src={`${API_URL}/products/${product.filename}`}
                         alt={product.name || 'Product'}
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                         loading="lazy"

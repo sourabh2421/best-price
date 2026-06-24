@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { HiUpload, HiTrash, HiLogout } from 'react-icons/hi'
+import { API_URL } from '../../config'
 
 function AdminDashboard({ onLogout }) {
   const [products, setProducts] = useState([])
@@ -16,7 +17,7 @@ function AdminDashboard({ onLogout }) {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/products')
+      const response = await fetch(`${API_URL}/api/products`)
       const data = await response.json()
       setProducts(data)
     } catch (error) {
@@ -67,7 +68,7 @@ function AdminDashboard({ onLogout }) {
       
       formData.append('productDetails', JSON.stringify(detailsArray))
 
-      const response = await fetch('http://localhost:3001/api/admin/upload', {
+      const response = await fetch(`${API_URL}/api/admin/upload`, {
         method: 'POST',
         credentials: 'include',
         body: formData,
@@ -94,7 +95,7 @@ function AdminDashboard({ onLogout }) {
     if (!confirm('Delete this product?')) return
 
     try {
-      const response = await fetch(`http://localhost:3001/api/admin/products/${id}`, {
+      const response = await fetch(`${API_URL}/api/admin/products/${id}`, {
         method: 'DELETE',
         credentials: 'include',
       })
@@ -243,7 +244,7 @@ function AdminDashboard({ onLogout }) {
                   className="group relative overflow-hidden rounded-xl border border-slate-200"
                 >
                   <img
-                    src={`http://localhost:3001/products/${product.filename}`}
+                    src={`${API_URL}/products/${product.filename}`}
                     alt={product.name || 'Product'}
                     className="aspect-square w-full object-cover"
                   />
