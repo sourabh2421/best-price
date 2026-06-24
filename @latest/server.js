@@ -99,6 +99,20 @@ const writeProducts = (products) => {
 
 // Routes
 
+// Root endpoint - API info
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Best Price API Server',
+    status: 'running',
+    endpoints: {
+      products: '/api/products',
+      admin_login: '/api/admin/login',
+      admin_upload: '/api/admin/upload',
+      admin_delete: '/api/admin/products/:id'
+    }
+  })
+})
+
 // Admin login
 app.post('/api/admin/login', (req, res) => {
   const { password } = req.body
