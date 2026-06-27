@@ -15,8 +15,12 @@ function AdminPage() {
 
   const checkAuth = async () => {
     try {
+      const token = localStorage.getItem('admin_token')
+      const headers = token ? { 'Authorization': `Bearer ${token}` } : {}
+
       const response = await fetch(`${API_URL}/api/admin/check`, {
         credentials: 'include',
+        headers: headers,
       })
       setIsAuthenticated(response.ok)
     } catch (error) {
@@ -32,14 +36,25 @@ function AdminPage() {
 
   const handleLogout = async () => {
     try {
+      const token = localStorage.getItem('admin_token')
+      const headers = token ? { 'Authorization': `Bearer ${token}` } : {}
+
       await fetch(`${API_URL}/api/admin/logout`, {
         method: 'POST',
         credentials: 'include',
+        headers: headers,
       })
+      
+      // Clear token from localStorage
+      localStorage.removeItem('admin_token')
+      
       setIsAuthenticated(false)
       navigate('/admin')
     } catch (error) {
       console.error('Logout error:', error)
+      // Clear token even if logout request fails
+      localStorage.removeItem('admin_token')
+      setIsAuthenticated(false)
     }
   }
 

@@ -21,7 +21,13 @@ function AdminLogin({ onLogin }) {
       })
 
       if (response.ok) {
-        onLogin()
+        const data = await response.json()
+        if (data.success && data.token) {
+          localStorage.setItem('admin_token', data.token)
+          onLogin()
+        } else {
+          setError('Invalid response from server')
+        }
       } else {
         setError('Invalid password')
       }

@@ -17,8 +17,10 @@ function AdminDashboard({ onLogout }) {
 
   const fetchProducts = async () => {
     try {
+      const token = localStorage.getItem('admin_token')
       const response = await fetch(`${API_URL}/api/products`, {
-        credentials: 'include'
+        credentials: 'include',
+        headers: token ? { 'Authorization': `Bearer ${token}` } : {}
       })
       const data = await response.json()
       setProducts(data)
@@ -70,9 +72,13 @@ function AdminDashboard({ onLogout }) {
       
       formData.append('productDetails', JSON.stringify(detailsArray))
 
+      const token = localStorage.getItem('admin_token')
+      const headers = token ? { 'Authorization': `Bearer ${token}` } : {}
+
       const response = await fetch(`${API_URL}/api/admin/upload`, {
         method: 'POST',
         credentials: 'include',
+        headers: headers,
         body: formData,
       })
 
@@ -84,7 +90,8 @@ function AdminDashboard({ onLogout }) {
         fetchProducts()
         document.getElementById('file-input').value = ''
       } else {
-        setMessage('✗ Upload failed')
+        const errorData = await response.json()
+        setMessage(`✗ Upload failed: ${errorData.error || 'Unknown error'}`)
       }
     } catch (error) {
       setMessage('✗ Connection error')
@@ -97,9 +104,13 @@ function AdminDashboard({ onLogout }) {
     if (!confirm('Delete this product?')) return
 
     try {
+      const token = localStorage.getItem('admin_token')
+      const headers = token ? { 'Authorization': `Bearer ${token}` } : {}
+
       const response = await fetch(`${API_URL}/api/admin/products/${id}`, {
         method: 'DELETE',
         credentials: 'include',
+        headers: headers,
       })
 
       if (response.ok) {
