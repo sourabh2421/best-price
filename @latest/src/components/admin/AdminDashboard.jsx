@@ -17,7 +17,9 @@ function AdminDashboard({ onLogout }) {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/products`)
+      const response = await fetch(`${API_URL}/api/products`, {
+        credentials: 'include'
+      })
       const data = await response.json()
       setProducts(data)
     } catch (error) {
