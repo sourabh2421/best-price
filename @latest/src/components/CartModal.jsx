@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { HiX, HiTrash, HiMinus, HiPlus } from 'react-icons/hi'
 import { FaWhatsapp } from 'react-icons/fa'
 import { business } from '../data/siteData'
+import { API_URL } from '../config'
 
 function CartModal({ isOpen, onClose, cart, setCart }) {
   const updateQuantity = (id, change) => {
@@ -80,7 +81,7 @@ function CartModal({ isOpen, onClose, cart, setCart }) {
                   {cart.map((item) => (
                     <div key={item.id} className="flex gap-4 rounded-xl border border-slate-200 p-4">
                       <img
-                        src={`http://localhost:3001/products/${item.filename}`}
+                        src={`${API_URL}/products/${item.filename}`}
                         alt={item.name}
                         className="h-20 w-20 rounded-lg object-cover"
                       />

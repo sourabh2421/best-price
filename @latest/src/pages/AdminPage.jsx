@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AdminLogin from '../components/admin/AdminLogin'
 import AdminDashboard from '../components/admin/AdminDashboard'
+import { API_URL } from '../config'
 
 function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -14,7 +15,7 @@ function AdminPage() {
 
   const checkAuth = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/admin/check', {
+      const response = await fetch(`${API_URL}/api/admin/check`, {
         credentials: 'include',
       })
       setIsAuthenticated(response.ok)
@@ -31,7 +32,7 @@ function AdminPage() {
 
   const handleLogout = async () => {
     try {
-      await fetch('http://localhost:3001/api/admin/logout', {
+      await fetch(`${API_URL}/api/admin/logout`, {
         method: 'POST',
         credentials: 'include',
       })
