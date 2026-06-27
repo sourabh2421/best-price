@@ -89,7 +89,7 @@ function Shop() {
               >
                 <div className="aspect-square overflow-hidden bg-slate-50">
                   <img
-                    src={`${API_URL}/products/${product.filename}`}
+                    src={product.imageUrl || `${API_URL}/products/${product.filename}`}
                     alt={product.name || 'Product'}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"

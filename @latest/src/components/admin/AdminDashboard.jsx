@@ -246,7 +246,7 @@ function AdminDashboard({ onLogout }) {
                   className="group relative overflow-hidden rounded-xl border border-slate-200"
                 >
                   <img
-                    src={`${API_URL}/products/${product.filename}`}
+                    src={product.imageUrl || `${API_URL}/products/${product.filename}`}
                     alt={product.name || 'Product'}
                     className="aspect-square w-full object-cover"
                   />
