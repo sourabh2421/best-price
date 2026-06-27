@@ -19,7 +19,7 @@ function Shop() {
         credentials: 'include'
       })
       const data = await response.json()
-      setProducts(data)
+      setProducts(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error('Failed to load products:', error)
     } finally {
