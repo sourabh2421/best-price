@@ -16,11 +16,11 @@ function Footer() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="bg-slate-900 py-20"
+      className="bg-slate-900 py-16 md:py-20"
     >
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-3">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-3">
         <div>
-          <h3 className="font-display text-2xl font-bold text-white">
+          <h3 className="font-display text-xl sm:text-2xl font-bold text-white">
             Best Price Mobile Accessories And Repairing
           </h3>
           <p className="mt-3 text-sm text-slate-400">{business.hindiName}</p>
@@ -52,7 +52,7 @@ function Footer() {
           {/* Prominent Call CTA */}
           <a
             href={`tel:${business.phone}`}
-            className="mt-4 inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow"
+            className="mt-4 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow"
           >
             <FaPhoneAlt size={14} />
             Call Now: {business.phone}
@@ -68,7 +68,7 @@ function Footer() {
               <FaInstagram size={15} />
               Follow on Instagram
             </a>
-            <p className="text-sm text-slate-400">{business.address}</p>
+            <p className="text-sm text-slate-400 break-words">{business.address}</p>
           </div>
         </div>
       </div>

@@ -52,18 +52,18 @@ function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
         <Link
           to="/"
-          className="flex cursor-pointer items-center gap-3"
+          className="flex cursor-pointer items-center gap-2 sm:gap-3 min-w-0"
         >
           <img
             src={logo}
             alt="Best Price Mobile Accessories and Repairing Shop Delhi"
-            className="h-11 rounded-lg bg-white p-1 object-contain shadow-sm transition-transform duration-300 hover:scale-105 md:h-14"
+            className="h-10 sm:h-11 md:h-14 shrink-0 rounded-lg bg-white p-1 object-contain shadow-sm transition-transform duration-300 hover:scale-105"
             loading="eager"
           />
-          <span className="hidden font-display text-xl font-bold text-slate-900 sm:block md:text-2xl">
+          <span className="hidden font-display text-lg sm:text-xl md:text-2xl font-bold text-slate-900 sm:block truncate">
             Best Price
           </span>
         </Link>
@@ -104,7 +104,7 @@ function Navbar() {
           ))}
           <a
             href={phoneHref}
-            className="rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow"
+            className="rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 px-4 sm:px-6 py-2 sm:py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow whitespace-nowrap"
           >
             Call Now
           </a>
@@ -114,14 +114,14 @@ function Navbar() {
           type="button"
           aria-label="Toggle navigation menu"
           onClick={() => setOpen((prev) => !prev)}
-          className="rounded-xl border border-slate-200 bg-white/90 p-2.5 text-slate-700 shadow-sm backdrop-blur transition-colors hover:bg-slate-50 md:hidden"
+          className="rounded-xl border border-slate-200 bg-white/90 p-2.5 text-slate-700 shadow-sm backdrop-blur transition-colors hover:bg-slate-50 md:hidden min-h-[44px] min-w-[44px]"
         >
           {open ? <HiX size={20} /> : <HiMenuAlt3 size={20} />}
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-slate-200/60 bg-white/95 px-6 py-5 backdrop-blur md:hidden">
+        <div className="border-t border-slate-200/60 bg-white/95 px-4 sm:px-6 py-5 backdrop-blur md:hidden">
           <div className="flex flex-col gap-2">
             {links.map((link) => (
               link.type === 'route' ? (
@@ -154,7 +154,7 @@ function Navbar() {
             ))}
             <a
               href={phoneHref}
-              className="mt-2 inline-flex w-fit rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary-500/20"
+              className="mt-2 inline-flex w-full sm:w-auto justify-center items-center rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-500/20 min-h-[44px]"
             >
               Call Now
             </a>

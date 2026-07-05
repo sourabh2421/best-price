@@ -99,47 +99,47 @@ function ShopPage() {
             : 'bg-white/95 backdrop-blur'
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link to="/" className="flex cursor-pointer items-center gap-3">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
+          <Link to="/" className="flex cursor-pointer items-center gap-2 sm:gap-3">
             <img
               src={logo}
               alt="Best Price Mobile Accessories"
-              className="h-11 rounded-lg bg-white p-1 object-contain shadow-sm transition-transform duration-300 hover:scale-105 md:h-14"
+              className="h-10 sm:h-11 md:h-14 rounded-lg bg-white p-1 object-contain shadow-sm transition-transform duration-300 hover:scale-105"
               loading="eager"
             />
-            <span className="hidden font-display text-xl font-bold text-slate-900 sm:block md:text-2xl">
+            <span className="hidden sm:block font-display text-lg sm:text-xl md:text-2xl font-bold text-slate-900">
               Best Price
             </span>
           </Link>
 
-          <nav className="flex items-center gap-4">
+          <nav className="flex items-center gap-2 sm:gap-4">
             <Link
               to="/"
-              className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 md:px-5 md:py-2.5"
+              className="flex items-center gap-1.5 sm:gap-2 rounded-xl border border-slate-200 bg-white px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50"
             >
               <HiHome size={18} />
               <span className="hidden sm:inline">Home</span>
             </Link>
-            <span className="font-display text-lg font-semibold text-primary-600">
+            <span className="font-display text-base sm:text-lg font-semibold text-primary-600">
               Shop
             </span>
           </nav>
         </div>
       </header>
       
-      <main className="pt-24 md:pt-28">
+      <main className="pt-24 sm:pt-28 md:pt-32">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-primary-600 via-primary-500 to-accent-500 py-16 text-white">
-          <div className="mx-auto max-w-7xl px-6">
+        <section className="bg-gradient-to-br from-primary-600 via-primary-500 to-accent-500 py-12 sm:py-16 text-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="font-display text-4xl font-bold md:text-5xl lg:text-6xl">
+              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
                 Our Shop
               </h1>
-              <p className="mt-4 max-w-2xl text-lg text-blue-50 md:text-xl">
+              <p className="mt-4 max-w-2xl text-base sm:text-lg md:text-xl text-blue-50">
                 Browse our collection of premium mobile accessories at unbeatable prices
               </p>
             </motion.div>
@@ -147,8 +147,8 @@ function ShopPage() {
         </section>
 
         {/* Products Section */}
-        <section className="py-16 md:py-20">
-          <div className="mx-auto max-w-7xl px-6">
+        <section className="py-12 sm:py-16 md:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             {isLoading ? (
               <div className="py-20 text-center">
                 <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-primary-200 border-t-primary-600"></div>
@@ -163,7 +163,7 @@ function ShopPage() {
                 variants={container}
                 initial="hidden"
                 animate="show"
-                className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+                className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
               >
                 {products.map((product) => (
                   <motion.div
@@ -238,14 +238,14 @@ function ShopPage() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsCartOpen(true)}
-            className="fixed right-6 top-24 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-success-600 to-success-500 text-white shadow-lg shadow-success-500/50 transition-all md:top-28"
+            className="fixed right-4 sm:right-6 top-20 sm:top-24 md:top-28 z-[100] flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gradient-to-r from-success-600 to-success-500 text-white shadow-lg shadow-success-500/50 transition-all"
           >
-            <HiShoppingCart size={24} />
+            <HiShoppingCart size={20} className="sm:w-6 sm:h-6" />
             <motion.span
               key={cartCount}
               initial={{ scale: 1.5 }}
               animate={{ scale: 1 }}
-              className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-500 text-xs font-bold ring-2 ring-white"
+              className="absolute -right-1 -top-1 flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-accent-500 text-xs font-bold ring-2 ring-white"
             >
               {cartCount}
             </motion.span>

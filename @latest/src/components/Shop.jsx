@@ -8,9 +8,22 @@ import SectionHeading from './ui/SectionHeading'
 function Shop() {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  
+  const getLimit = () => {
+    if (window.innerWidth >= 1024) return 8  // lg: 4 cols
+    return 6                                  // sm/md: 2-3 cols
+  }
+  
+  const [limit, setLimit] = useState(getLimit)
 
   useEffect(() => {
     fetchProducts()
+  }, [])
+
+  useEffect(() => {
+    const handleResize = () => setLimit(getLimit())
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   const fetchProducts = async () => {
@@ -43,7 +56,7 @@ function Shop() {
   if (isLoading) {
     return (
       <section id="shop" className="section-anchor bg-white py-20 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Our Shop"
             title="Featured Products"
@@ -55,12 +68,11 @@ function Shop() {
     )
   }
 
-  // Show only first 4 products on homepage
-  const featuredProducts = products.slice(0, 4)
+  const featuredProducts = products.slice(0, limit)
 
   return (
     <section id="shop" className="section-anchor relative bg-white py-20 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Our Shop"
           title="Featured Products"
@@ -109,7 +121,7 @@ function Shop() {
         </motion.div>
 
         {/* View All Button */}
-        {products.length > 4 && (
+        {products.length > limit && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

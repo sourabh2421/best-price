@@ -82,7 +82,7 @@ function Hero() {
           {/* Main headline - Enhanced typography */}
           <motion.h1
             variants={itemVariants}
-            className="font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.02em] text-slate-900 sm:text-6xl md:text-7xl lg:text-8xl"
+            className="font-display text-4xl font-extrabold leading-[0.95] tracking-[-0.02em] text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
           >
             Best Mobile
             <br />
@@ -100,7 +100,7 @@ function Hero() {
           {/* Hindi subtitle */}
           <motion.p
             variants={itemVariants}
-            className="mt-6 text-lg font-medium text-slate-600 tracking-wide"
+            className="mt-6 text-base sm:text-lg font-medium text-slate-600 tracking-wide"
           >
             {business.hindiName}
           </motion.p>
@@ -108,7 +108,7 @@ function Hero() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="mt-8 max-w-xl text-lg leading-relaxed text-slate-700"
+            className="mt-8 max-w-xl text-base sm:text-lg leading-relaxed text-slate-700"
           >
             Premium quality mobile accessories and expert phone repair services in West Patel Nagar, Delhi. 
             <span className="font-medium text-slate-900"> Trusted by thousands of customers.</span>
@@ -117,7 +117,7 @@ function Hero() {
           {/* CTA buttons */}
           <motion.div
             variants={itemVariants}
-            className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
+            className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:flex-wrap"
           >
             <motion.a
               href={`tel:${business.phone}`}
@@ -133,7 +133,7 @@ function Hero() {
               <motion.button
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-900 transition-all duration-300 hover:border-slate-300 hover:bg-slate-50 hover:shadow-md"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-2xl border-2 border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-900 transition-all duration-300 hover:border-slate-300 hover:bg-slate-50 hover:shadow-md"
               >
                 <HiShoppingBag size={20} />
                 Shop Now
@@ -144,7 +144,7 @@ function Hero() {
               href="#contact"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center rounded-2xl border-2 border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-900 transition-all duration-300 hover:border-slate-300 hover:bg-slate-50 hover:shadow-md"
+              className="inline-flex w-full sm:w-auto items-center justify-center rounded-2xl border-2 border-slate-200 bg-white px-8 py-4 text-base font-semibold text-slate-900 transition-all duration-300 hover:border-slate-300 hover:bg-slate-50 hover:shadow-md"
             >
               Visit Store
             </motion.a>

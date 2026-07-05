@@ -10,7 +10,7 @@ function Contact() {
 
   return (
     <section id="contact" className="section-anchor bg-slate-50 py-20 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Visit Us"
           title="Location & Contact"
@@ -26,7 +26,7 @@ function Contact() {
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Address</p>
-                  <p className="mt-1 text-slate-600">{business.address}</p>
+                  <p className="mt-1 text-slate-600 break-words">{business.address}</p>
                 </div>
               </li>
               <li className="flex gap-4">
@@ -79,7 +79,7 @@ function Contact() {
               src={mapSrc}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="h-[360px] w-full lg:h-full"
+              className="h-[300px] w-full sm:h-[360px] lg:h-full"
             />
           </Reveal>
         </div>
