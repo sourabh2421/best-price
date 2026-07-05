@@ -81,7 +81,7 @@ function CartModal({ isOpen, onClose, cart, setCart }) {
                   {cart.map((item) => (
                     <div key={item.id} className="flex gap-4 rounded-xl border border-slate-200 p-4">
                       <img
-                        src={`${API_URL}/products/${item.filename}`}
+                        src={item.imageUrl || `${API_URL}/products/${item.filename}`}
                         alt={item.name}
                         className="h-20 w-20 rounded-lg object-cover"
                       />
